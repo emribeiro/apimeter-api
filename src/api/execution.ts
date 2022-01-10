@@ -12,12 +12,12 @@ type execution = {
 class ExecutionUseCase{
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const {url, count} = request.body;
+        const {url, count, headers} = request.body;
 
         let resp: AxiosResponse;
         const executions: execution[]= [];
 
-        const instance = axios.create({baseURL: url})
+        const instance = axios.create({baseURL: url, headers})
 
         let amount = 0;
 
